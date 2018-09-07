@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python. 
   
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Achintya Gupta.
+"""  # TO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -97,8 +97,14 @@ def draw_squares_from_circle(n, circle, window):
       :type circle: rg.Circle
       :type window: rg.RoseWindow
     """
+    circle.attach_to(window)
+    window.render(0.01)
+    for k in range(n):
+        rectangle=rg.Rectangle(rg.Point(circle.center.x-circle.radius+circle.radius*k,circle.center.y-circle.radius+circle.radius*k),rg.Point(circle.center.x+circle.radius*(k+1),circle.center.y+circle.radius*(k+1)))
+        rectangle.attach_to(window)
+        window.render(0.01)
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # TO: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
