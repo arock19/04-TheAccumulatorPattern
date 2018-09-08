@@ -231,7 +231,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
         window.render(0.01)
 
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # TO: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -315,15 +315,27 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
              - R1_color is the outline color of the 1st rg.Rectangle
              - R2_color is the outline color of the 2nd rg.Rectangle
       Must  ** render **     but   ** NOT close **   the window.
-
-    Type hints:
-      :type rectangle1: rg.Rectangle
-      :type rectangle2: rg.Rectangle
+ rectangle2: rg.Rectangle
       :type n: int
       :type window: rg.RoseWindow
       """
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+    window.render(0.01)
+    for k in range(n):
+        line=rg.Line(rg.Point(rectangle1.get_center().x-rectangle1.get_width()*k/2,rectangle1.get_center().y+rectangle1.get_height()*k/2),rg.Point(rectangle2.get_center().x-rectangle1.get_width()*k/2,rectangle2.get_center().y+rectangle1.get_height()*k/2))
+        line.thickness=5
+        if (k+1) % 2 ==0:
+            line.color=rectangle2.outline_color
+        else:
+            line.color=rectangle1.outline_color
+        line.attach_to(window)
+        window.render(0.01)
+
+
+
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # TO: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
